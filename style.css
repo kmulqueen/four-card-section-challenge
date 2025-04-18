@@ -218,3 +218,41 @@ footer {
     grid-area: 3 / 2 / 4 / 4;
   }
 }
+
+@media (min-width: 1100px) {
+  main {
+    padding: 5em 7em;
+  }
+  .text-preset-1 {
+    font-size: var(--font-size-lg);
+  }
+
+  .text-preset-2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .text-preset-4 {
+    font-size: var(--font-size-sm);
+    max-inline-size: 50.8ch;
+  }
+
+  .info-container {
+    margin-bottom: 5em;
+  }
+  .cards-container {
+    grid-template-rows: repeat(4, 6.33rem);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card--supervisor {
+    grid-area: 2/1/4/2;
+  }
+  .card--team-builder {
+    grid-area: 1/2/3/3;
+  }
+  .card--calculator {
+    grid-area: 2/3/4/4;
+  }
+  .card--karma {
+    grid-area: 3/2/5/3;
+  }
+}
