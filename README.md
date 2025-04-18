@@ -1,91 +1,176 @@
-# Frontend Mentor - Four card feature section
+# Frontend Mentor - Four card feature section solution
 
-![Design preview for the Four card feature section coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Four card feature section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/four-card-feature-section-weK1eFYK). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Frontend Mentor - Four card feature section solution](#frontend-mentor---four-card-feature-section-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a basic understanding of HTML and CSS.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this feature section and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should:
+Users should be able to:
 
 - View the optimal layout for the site depending on their device's screen size
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Screenshot
 
-## Where to find everything
+![Kyle Mulqueen's desktop solution](./images/kyle-solution-desktop.png)
+**Desktop solution**
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+![Kyle Mulqueen's tablet solution](./images/kyle-solution-tablet.png)
+**Tablet solution**
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+![Kyle Mulqueen's mobile solution](./images/kyle-solution-mobile.png)
+**Mobile solution (screenshot clipped at end)**
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+### Links
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+## My process
 
-## Building your project
+### Built with
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+### What I learned
 
-## Deploying your project
+During this Frontend Mentor challenge, I learned several important concepts about modern CSS layouts and responsive design:
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+1. **Grid Area Positioning for Creative Layouts**: I implemented a fully responsive card layout that transforms from a simple stacked mobile view to a complex diamond-shaped arrangement on desktop. The most challenging aspect was positioning the cards in a visually balanced pattern using grid-area:
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+   ```css
+   /* Desktop layout */
+   @media (min-width: 1100px) {
+     .cards-container {
+       grid-template-rows: repeat(4, 6.33rem);
+       grid-template-columns: repeat(3, 1fr);
+     }
+     .card--supervisor {
+       grid-area: 2/1/4/2;
+     }
+     .card--team-builder {
+       grid-area: 1/2/3/3;
+     }
+     .card--calculator {
+       grid-area: 2/3/4/4;
+     }
+     .card--karma {
+       grid-area: 3/2/5/3;
+     }
+   }
+   ```
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+   I initially wondered if decimal values like `grid-area: 1/1.5/2/2.5` were possible for even more precise positioning, but learned that CSS Grid only supports integer-based line numbers.
 
-## Create a custom `README.md`
+2. **Semantic HTML Structure**: I implemented a clean, semantic HTML structure using appropriate tags like `<article>` for each card and proper heading hierarchy. This improves accessibility and SEO while providing clear hooks for styling:
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+   ```html
+   <article class="card card--supervisor">
+     <h1 class="card__title text-preset-3">Supervisor</h1>
+     <p class="card__description text-preset-5">
+       Monitors activity to identify project roadblocks
+     </p>
+     <img
+       src="/images/icon-supervisor.svg"
+       alt="Supervisor icon"
+       width="24"
+       height="24"
+       class="card__icon"
+     />
+   </article>
+   ```
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+3. **CSS Custom Properties for Design Systems**: I created a comprehensive design token system using CSS variables for colors, typography, spacing, and more. This approach ensures consistency throughout the design and makes theme changes simple:
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+   ```css
+   :root {
+     --color-red: hsl(0, 78%, 62%);
+     --color-cyan: hsl(180, 62%, 55%);
+     --font-size-sm: clamp(0.9375rem, calc(0.91rem + 0.14vw), 1rem);
+     --spacing-400: 2rem;
+     /* Other variables... */
+   }
+   ```
 
-## Submitting your solution
+4. **Fluid Typography with `clamp()`**: Instead of fixed font sizes that change abruptly at breakpoints, I implemented truly responsive typography using the `clamp()` function, creating a seamless reading experience across device sizes:
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+   ```css
+   --font-size-lg: clamp(
+     2.25rem,
+     calc(1.8rem + 2.25vw),
+     3rem
+   ); /* 36px to 48px */
+   ```
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+5. **Text Preset System**: I created reusable text preset classes that combine font-size, weight, line-height, and other typographic properties, making it easy to maintain consistent typography throughout the site:
 
-## Sharing your solution
+   ```css
+   .text-preset-3 {
+     font-size: var(--font-size-sm);
+     font-weight: var(--font-weight-bold);
+     line-height: var(--line-height-sm);
+     color: var(--color-grey-dark);
+   }
+   ```
 
-There are multiple places you can share your solution:
+6. **Hybrid Layout Techniques**: I learned how to effectively combine CSS Grid for overall page layout with Flexbox for component-level styling, leveraging the strengths of each:
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+   ```css
+   .cards-container {
+     display: grid;
+     gap: var(--spacing-400);
+   }
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+   .card {
+     display: flex;
+     flex-direction: column;
+   }
+   ```
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+### Continued development
 
-## Got feedback for us?
+In future projects, I want to focus on:
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+1. **Grid Template Areas**: While I used grid-area with numeric positioning in this project, I'd like to explore named grid areas for more readable and maintainable layouts, especially for complex designs.
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+2. **Advanced Grid Techniques**: I'm interested in exploring techniques to achieve visual effects like "half-column" positioning using either more granular grids or strategic placement with `fr` units.
 
-**Have fun building!** 🚀
+3. **Animation and Transitions**: Adding subtle animations between grid states as the viewport changes size would enhance the user experience. I'd like to explore CSS transitions for smooth layout transformations.
+
+4. **Accessibility Enhancements**: While I used semantic HTML, I want to further improve accessibility by implementing proper ARIA attributes and ensuring perfect keyboard navigation, especially for complex grid layouts.
+
+5. **Performance Optimization**: I want to explore techniques for optimizing CSS Grid layouts for performance, particularly when using complex transformations across breakpoints.
+
+## Useful resources
+
+- [Josh Comeau's CSS Grid Tutorial](https://www.joshwcomeau.com/css/interactive-guide-to-grid/) - This helped me understand the intricacies of CSS Grid.
+
+- [Fluid Type Scale Calculator](https://www.fluid-type-scale.com/) - This tool was invaluable for generating my fluid typography with clamp() functions.
+
+- [CSS Tricks: A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) - This comprehensive guide helped me understand grid positioning and develop creative layouts.
+
+- [Kevin Powell's YouTube Channel](https://www.youtube.com/kevinpowell) - His tutorials on modern CSS techniques, particularly on combining Grid and Flexbox, were extremely helpful.
+
+## Author
+
+- Website - [Kyle Mulqueen](https://kmulqueen.github.io/portfolio-2025/)
+- Frontend Mentor - [@kmulqueen](https://www.frontendmentor.io/profile/kmulqueen)
